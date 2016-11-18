@@ -1,0 +1,15 @@
+Package: spatialcompare
+Type: Package
+Title: Spatial Pattern Comparison Metrics
+Version: 0.1.1
+Imports:
+    raster,
+    sp
+Author: Colin Robertson
+Maintainer: Colin Robertson <crobertson@wlu.ca>
+Description: Package implementing functions to compare spatial patterns. Relies heavily on sp and raster spatial classes.
+License: What license is it under?
+LazyData: TRUE
+RoxygenNote: 5.0.1
+
+
