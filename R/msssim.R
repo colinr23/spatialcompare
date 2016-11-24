@@ -15,6 +15,9 @@
 #' @param GFil is a binary flag for whether a Gaussian filter should be applied as a smoothing function
 #' @param edge is a binary flag for whether a torroidal edge correction should be applied
 #' @param ks is a vector of length 2 which contains values for constants in the SSIM formula. If ignored default values will be used.
+#' @param level is the number of scales to evaulate statistic at, default is 5
+#' @param weight is the weights for scales in \code{level}, and should be a vector of length \code{level}. Defaults are optimal values determined empirically in Wang et al. (2003)
+#' @param method is the method for combining SSIM components, currently the only option
 #'
 #'
 #' @return
