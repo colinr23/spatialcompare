@@ -14,7 +14,8 @@ weighted_avg_maximum_relative_area_overlap <- function(poly1, poly2)
   for(i in 1:n_poly)
   {
     p = poly1@polygons[[i]]@Polygons[[1]]@coords
-    a[i] = geosphere::areaPolygon(p)
+    #a[i] = geosphere::areaPolygon(p)
+    a[i] = area.poly(as(p, "gpc.poly")) #poly1@polygons[[i]]@Polygons[[1]]@area
     s[i] = a[i] * maximum_rel_area_ovelap(poly2,p)
   }
   s1 = sum(s)

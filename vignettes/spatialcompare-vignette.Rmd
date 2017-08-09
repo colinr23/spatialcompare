@@ -103,6 +103,7 @@ weighted_simultanous_area_overlap(polys,polys2)
 Data from [@maruca_area-based_2002] were re-created to demonstrate metric values for overlap statistics. 
 ```{r, message=FALSE, echo= FALSE}
   data('scenarios')
+  proj4string(scenarios) <- ""
   Scenes = vector(length=10)
   Ai = vector(length=10)
   Aj = vector(length=10)
