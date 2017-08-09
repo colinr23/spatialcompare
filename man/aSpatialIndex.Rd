@@ -7,7 +7,7 @@
 aSpatialIndex(x, y, method = "pearson")
 }
 \arguments{
-\item{method}{is the index requested. One of 'Pearson', 'rmse', 'rmae', 'coef', 'wilm1', 'wilm2', 'bias', 'crm'}
+\item{method}{is the index requested. One of 'Pearson', 'concordance', 'rmse', 'rmae', 'coef', 'wilm1', 'wilm2', 'bias', 'crm'}
 }
 \value{
 \code{aSpatialIndex} returns a numeric vector with the index value
