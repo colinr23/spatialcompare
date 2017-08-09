@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Area Overlap Statistic
 
-The area overlap statistics include all the statistics described by [@maruca_area-based_2002] (https://link.springer.com/article/10.1007/s101090100075). These statistics are probabilistic pattern association tests that are appropriate when edge effects are present, polygon size is heterogeneous, and the number of polygons varies from one classification to another. 
+The area overlap statistics include all the statistics described by [@maruca_area-based_2002](https://link.springer.com/article/10.1007/s101090100075). These statistics are probabilistic pattern association tests that are appropriate when edge effects are present, polygon size is heterogeneous, and the number of polygons varies from one classification to another. 
 
 #### Relative Area Overlap
 The relative area overlap is area of intersection as a fraction of the area of union of two polygons. For identical polygons the relative area overlap will be 1.
@@ -221,7 +221,7 @@ quantity_disagreement(A4,refer)
 
 ## Allocation Disagreement
 
-The Allocation Disgreement is a statistic introduced in the paper "Death to Kappa: birth of quantity disagreement and allocation disagreement for accuracy assessment" ("http://www.tandfonline.com/doi/abs/10.1080/01431161.2011.552923"). This statistic along with the quantity disagreement statistic are presented as an alternative to the kappa indices in the paper. 
+The Allocation Disgreement is a statistic introduced in the paper [Death to Kappa: birth of quantity disagreement and allocation disagreement for accuracy assessment](http://www.tandfonline.com/doi/abs/10.1080/01431161.2011.552923). This statistic along with the quantity disagreement statistic are presented as an alternative to the kappa indices in the paper. 
 
 ```{r, message=FALSE}
 allocation_disagreement(comparison,refer)
@@ -337,31 +337,23 @@ allocation_disagreement(A4,refer)
 <!-- earthmd(x,y,threshold=.1) -->
 <!-- ``` -->
 
-<!-- ## SSIM -->
+## Structural Similarity Index 
+The SSIM is a statistic introduced in the paper "Image Quality Assessment: From Error Visibility to
+Structural Similarity" [available here](http://ieeexplore.ieee.org/document/1284395/). This is a method used to assessing perceptual image quality.
 
-<!-- The SSIM is a statistic introduced in the paper "Image Quality Assessment: From Error Visibility to -->
-<!-- Structural Similarity" (http://ieeexplore.ieee.org/document/1284395/?reload=true).This is a method used to assessing perceptual image quality.  -->
+```{r, message=FALSE, echo=FALSE}
+data("einsteins")
+library(raster)
+par(mfrow=c(2,3))
+image(einsteins[[1]], col=grey(seq(0, 1, length = 256)), axes=FALSE, main=paste("sssim =", round(ssim(einsteins[[1]],einsteins[[1]],w = 5)[[1]], 3)))
+image(einsteins[[2]], col=grey(seq(0, 1, length = 256)), axes=FALSE, main=paste("sssim =", round(ssim(einsteins[[1]],einsteins[[2]],w = 5)[[1]], 3)))
+image(einsteins[[3]], col=grey(seq(0, 1, length = 256)), axes=FALSE, main=paste("sssim =", round(ssim(einsteins[[1]],einsteins[[3]],w = 5)[[1]], 3)))
+image(einsteins[[4]], col=grey(seq(0, 1, length = 256)), axes=FALSE, main=paste("sssim =", round(ssim(einsteins[[1]],einsteins[[4]],w = 5)[[1]], 3)))
+image(einsteins[[5]], col=grey(seq(0, 1, length = 256)), axes=FALSE, main=paste("sssim =", round(ssim(einsteins[[1]],einsteins[[5]],w = 5)[[1]], 3)))
+image(einsteins[[6]], col=grey(seq(0, 1, length = 256)), axes=FALSE, main=paste("sssim =", round(ssim(einsteins[[1]],einsteins[[6]],w = 5)[[1]], 3)))
+```
 
-
-<!-- ```{r, message=FALSE} -->
-<!-- # data("img", package="SpatialComparison") -->
-<!-- img = raster('Data\\ssim_images\\original.png') -->
-<!-- img1 = raster('Data\\ssim_images\\test1.png') -->
-<!-- img2 = raster('Data\\ssim_images\\test2.png') -->
-<!-- img3 = raster('Data\\ssim_images\\test3.png') -->
-<!-- img4 = raster('Data\\ssim_images\\test4.png') -->
-<!-- img5 = raster('Data\\ssim_images\\test5.png') -->
-<!-- img6 = raster('Data\\ssim_images\\test6.png') -->
-<!-- img7 = raster('Data\\ssim_images\\test7.png') -->
-<!-- ssim(img,img1,1) -->
-<!-- ssim(img,img2,1) -->
-<!-- ssim(img,img3,1) -->
-<!-- ssim(img,img4,1) -->
-<!-- ssim(img,img5,1) -->
-<!-- ssim(img,img6,1) -->
-<!-- ssim(img,img7,1) -->
-<!-- ``` -->
-
+The results replicate those posted [here](https://ece.uwaterloo.ca/~z70wang/research/ssim/#test)
 <!-- ##MSSSIM -->
 
 <!-- The MSSIM is a statistic introduced in the paper "Image Quality Assessment: From Error Visibility to -->
