@@ -1,33 +1,34 @@
 #' Quantity Disagreement
 #' Calculates the Quanitity Disagreement between 2 matices
 
-#'@param p Reference Matrix
-#'@param q Comparison Matrix
+#'@param p Reference object
+#'@param q Comparison object
 #'@return Quantity Disagreement between the 2 matrices
 #'@export
-quantity_disagreement <- function(p,q) # P and Q are 2 Matrices
+quantity_disagreement <- function(p,q) # P and Q are 2 Matrices or vectors
 {
-  sum1 = 0
-  sum2 = 0
-  for(row in 1:nrow(p)) {
-    for(col in 1:ncol(p)) {
-      if(p[row,col] == 1)
-      {
-        sum1 = sum1 + 1
-      }
+  vals <- unique(union(p[], q[])) #all unique values
+  ptab <- table(p[]) / length(p[]) #proportional frequencies
+  qtab <- table(q[]) / length(q[])
+  qv <- vector(length=length(vals))
+  pv <- vector(length=length(vals))
+  qg <- vector(length=length(vals))
+  for(v in 1:length(vals)) {
+    pv[v] <- 0
+    qv[v] <- 0
+    if(length(which(names(ptab) == vals[v])) > 0) {
+      pv[v] <- ptab[which(names(ptab) == vals[v])]
     }
+    if(length(which(names(qtab) == vals[v])) > 0) {
+      qv[v] <- qtab[which(names(qtab) == vals[v])]
+    }
+    #difference in proportion for category v
+    qg[v] <- abs(pv[v] - qv[v])
   }
 
-  for(row in 1:nrow(q)) {
-    for(col in 1:ncol(q)) {
-      if(q[row,col] == 1)
-      {
-        sum2 = sum2 + 1
-      }
-    }
-  }
-  s = abs(sum1 - sum2)
-  return(s)
+  #total allocation disagreement
+  Q = sum(qg)/2
+  return(Q)
 }
 
 
